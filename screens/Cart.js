@@ -5,6 +5,7 @@ import EmptyMsg from '../components/EmptyMsg'
 import CoursesInCart from '../components/CoursesInCart'
 import globalStyles from '../styles/globalStyles'
 import { removeCourseCart } from '../redux/actions/actionRomoveCourseCart'
+import { addPayment } from '../redux/actions/actionPayment'
 
 const Cart = () => {
   
@@ -13,6 +14,11 @@ const Cart = () => {
   const cartCourse = useSelector(state => state.cart.cartCourse);
   const total = useSelector(state => state.cart.total);
   
+  const handlePayment = (cartCourse, total) => {
+    dispatch(addPayment(cartCourse, total));
+    alert('Payement effectué');
+  }
+
   return (
     <View style={styles.cartContainer}>
       {
@@ -37,7 +43,7 @@ const Cart = () => {
               </Text>
 
               <TouchableOpacity
-                onPress={() => alert('Payer')}
+                onPress={() => handlePayment(cartCourse, total)}
               >
                 <View style={styles.btnAddPayment}>
                   <Text style={styles.btnAddPaymentText}>Payer</Text>

@@ -1,56 +1,18 @@
 import React from "react";
 import { createStackNavigator } from '@react-navigation/stack';
-import { AntDesign } from '@expo/vector-icons'
-import { HeaderButtons, Item } from "react-navigation-header-buttons";
-import CustomHeaderIcon from "../components/CustomHeaderIcon";
-import Landing from "../screens/Landing";
-import CourseInfos from "../screens/CourseInfos";
-import Cart from "../screens/Cart";
-import globalStyles from "../styles/globalStyles";
+import { CoursesDetailsStackNav } from "./CoursesDetailsStackNav";
+import Landing from "../screens/Landing";;
 
-const CoursesStackNavigator = createStackNavigator()
+const CoursesStackNavigator = createStackNavigator();
 
-export const CoursesStackNav = () => {
+export const CoursesStackNav = ({navigation}) => {
     return (
-        <CoursesStackNavigator.Navigator
-            screenOptions={({ navigation }) => (
-                {
-                    headerStyle: { backgroundColor: globalStyles.green },
-                    headerTitleStyle: { fontWeight: 'bold'},
-                    headerTintColor: globalStyles.white,
-                    headerRight: () => (
-                        <HeaderButtons 
-                            HeaderButtonComponent={CustomHeaderIcon}
-                        >
-                            <AntDesign 
-                                title="Panier"
-                                name="shoppingcart"
-                                size={25}
-                                color={globalStyles.white}
-                                onPress={() => navigation.navigate('Cart')}
-                            />
-                        </HeaderButtons>
-                    )  
-                }
-                
-            )}
-        >
+        <CoursesStackNavigator.Navigator>
             <CoursesStackNavigator.Screen
-                name="Landing"
+                name="Home"
                 component={Landing}
-            />
-            <CoursesStackNavigator.Screen
-                name="Details"
-                component={CourseInfos}
-                options={({ route }) => (
-                    {
-                        title: route.params.title
-                    }
-                )}
-            />
-            <CoursesStackNavigator.Screen
-                name="Cart"
-                component={Cart}
+                options={{title: 'Catalogue'}}
+                
             />
         </CoursesStackNavigator.Navigator>
     )

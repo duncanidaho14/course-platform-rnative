@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import { ScrollView, StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import { useSelector, useDispatch } from 'react-redux';
 import { AntDesign } from '@expo/vector-icons';
@@ -6,10 +6,11 @@ import globalStyles from '../styles/globalStyles';
 import { addToCart } from '../redux/actions/actionAddToCart';
 
 const CourseInfos = ({ navigation, route }) => {
-    console.log(route.params)
-    const courseId = route.params.courseId;
+    
     const dispatch = useDispatch();
-    const selectedCourse = useSelector(state => state.courses.existingCourses.find(course => course.id === courseId ));
+    const id = route.params.id;
+    const selectedCourse = useSelector(state => state.courses.existingCourses.find(course => course.id === id ));
+    
     const handleAddToCart = () => {
         dispatch(addToCart(selectedCourse));
         navigation.goBack();

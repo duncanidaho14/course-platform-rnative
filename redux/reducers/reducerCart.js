@@ -1,5 +1,5 @@
 import PaidCourseModel from '../../data/PaidCourseModel'
-import { ADD_TO_CART, REMOVE_COURSE_CART } from '../constants';
+import { ADD_TO_CART, REMOVE_COURSE_CART, ADD_PAYMENT } from '../constants';
 
 const initialState = {
     cartCourse: [],
@@ -34,6 +34,10 @@ const reducerCart = (state = initialState, action) => {
                 cartCourse: newCartCoursesArray,
                 total: state.total - coursePrice
             }
+        
+        case ADD_PAYMENT:
+            return initialState;
+            
         default:
             return state;
     }

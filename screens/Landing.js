@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Alert } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import CourseItem from '../components/CourseItem';
 import EmptyMsg from '../components/EmptyMsg'
@@ -11,6 +11,7 @@ const Landing = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const handleAddToCart = (course) => {
+        console.log(course)
         dispatch(addToCart(course));
         alert('article ajouter au panier');
     }
@@ -29,7 +30,7 @@ const Landing = ({ navigation }) => {
                         title={item.title}
                         price={item.price}
                         viewDetails={() => navigation.navigate('Details', {
-                            courseId: item.id,
+                            id: item.id,
                             title: item.title,
                             price: item.price
                         })}

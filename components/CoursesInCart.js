@@ -3,8 +3,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import globalStyles from '../styles/globalStyles'
 import { AntDesign } from '@expo/vector-icons'; 
 
-const CoursesInCart = (props) => {
-  console.log(props);
+const CoursesInCart = ({ route, props }) => {
+  console.log(route.prarams.id)
   return (
     <View style={styles.coursesContainer}>
       <Text numberOfLines={1} style={styles.title}>{props.title}</Text>
